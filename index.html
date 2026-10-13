@@ -21,11 +21,8 @@
       --green: #22c55e;
       --radius: 16px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: "DM Sans", system-ui, sans-serif;
       background: var(--bg);
@@ -34,7 +31,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -46,7 +42,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .wrap {
       position: relative;
       z-index: 1;
@@ -54,7 +49,6 @@
       margin: 0 auto;
       padding: 0 1.25rem;
     }
-
     header {
       padding: 1.25rem 0;
       border-bottom: 1px solid var(--border);
@@ -64,13 +58,11 @@
       top: 0;
       z-index: 50;
     }
-
     .header-inner {
       display: flex;
       align-items: center;
       gap: 0.85rem;
     }
-
     .logo {
       width: 38px;
       height: 38px;
@@ -85,29 +77,24 @@
       box-shadow: 0 0 20px var(--accent-glow);
       animation: pulse-glow 3s ease-in-out infinite;
     }
-
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 16px var(--accent-glow); }
       50% { box-shadow: 0 0 28px var(--accent-glow); }
     }
-
     .header-text h1 {
       font-family: "Outfit", sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: -0.02em;
     }
-
     .header-text p {
       font-size: 0.8rem;
       color: var(--muted);
     }
-
     .hero {
       padding: 4.5rem 0 3rem;
       text-align: center;
     }
-
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -122,7 +109,6 @@
       border: 1px solid rgba(99,102,241,0.25);
       animation: fadeUp 0.7s ease both;
     }
-
     .hero h2 {
       font-family: "Outfit", sans-serif;
       font-size: clamp(2rem, 5vw, 2.85rem);
@@ -136,7 +122,6 @@
       background-clip: text;
       animation: fadeUp 0.7s 0.1s ease both;
     }
-
     .hero p {
       font-size: 1.1rem;
       color: var(--muted);
@@ -144,7 +129,6 @@
       margin: 0 auto 1.75rem;
       animation: fadeUp 0.7s 0.2s ease both;
     }
-
     .model-tags {
       display: flex;
       flex-wrap: wrap;
@@ -152,7 +136,6 @@
       justify-content: center;
       animation: fadeUp 0.7s 0.3s ease both;
     }
-
     .tag {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -162,31 +145,25 @@
       color: var(--muted);
       transition: all 0.25s;
     }
-
     .tag:hover {
       border-color: var(--accent);
       color: var(--text);
       transform: translateY(-2px);
     }
-
     .tag strong { color: #c7d2fe; }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to { opacity: 1; transform: none; }
     }
-
     .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
     .reveal.visible {
       opacity: 1;
       transform: none;
     }
-
     .info-box {
       background: var(--accent-soft);
       border: 1px solid rgba(99,102,241,0.3);
@@ -198,19 +175,15 @@
       margin-bottom: 2.5rem;
       animation: fadeUp 0.7s 0.4s ease both;
     }
-
     .info-box span { font-size: 1.3rem; flex-shrink: 0; }
     .info-box p { color: #c7d2fe; font-size: 0.95rem; }
-
     .block { margin-bottom: 3rem; }
-
     .block-head {
       display: flex;
       align-items: center;
       gap: 0.85rem;
       margin-bottom: 1.4rem;
     }
-
     .block-num {
       width: 40px;
       height: 40px;
@@ -225,20 +198,17 @@
       flex-shrink: 0;
       box-shadow: 0 4px 14px var(--accent-glow);
     }
-
     .block-head h3 {
       font-family: "Outfit", sans-serif;
       font-size: 1.45rem;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-
     .step-list {
       display: flex;
       flex-direction: column;
       gap: 0.9rem;
     }
-
     .step-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -250,7 +220,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .step-card::before {
       content: "";
       position: absolute;
@@ -262,16 +231,13 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-
     .step-card:hover {
       background: var(--surface-hover);
       border-color: #3f3f46;
       transform: translateX(4px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     }
-
     .step-card:hover::before { opacity: 1; }
-
     .step-idx {
       width: 30px;
       height: 30px;
@@ -288,14 +254,12 @@
       margin-top: 1px;
       transition: all 0.3s;
     }
-
     .step-card:hover .step-idx {
       background: var(--accent);
       border-color: var(--accent);
       color: white;
       transform: scale(1.08);
     }
-
     .step-body h4 {
       font-family: "Outfit", sans-serif;
       font-size: 1.02rem;
@@ -303,23 +267,18 @@
       margin-bottom: 0.3rem;
       letter-spacing: -0.01em;
     }
-
     .step-body p {
       color: var(--muted);
       font-size: 0.94rem;
     }
-
     .step-body a {
       color: #a5b4fc;
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s;
     }
-
     .step-body a:hover { border-bottom-color: #a5b4fc; }
-
     .step-body strong { color: #e4e4e7; }
-
     .shot {
       margin: 1.75rem 0;
       border-radius: var(--radius);
@@ -328,15 +287,12 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.45);
       transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
-
     .shot:hover { transform: scale(1.01); }
-
     .shot img {
       width: 100%;
       height: auto;
       display: block;
     }
-
     .done-box {
       background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(99,102,241,0.12));
       border: 1px solid rgba(34,197,94,0.3);
@@ -345,7 +301,6 @@
       text-align: center;
       margin: 2.5rem 0;
     }
-
     .done-box h3 {
       font-family: "Outfit", sans-serif;
       font-size: 1.55rem;
@@ -353,14 +308,12 @@
       color: var(--green);
       margin-bottom: 0.7rem;
     }
-
     .done-box p {
       color: var(--muted);
       max-width: 480px;
       margin: 0 auto;
       font-size: 1rem;
     }
-
     .warn-box {
       background: rgba(234,179,8,0.08);
       border: 1px solid rgba(234,179,8,0.25);
@@ -370,29 +323,24 @@
       gap: 0.9rem;
       margin-bottom: 2rem;
     }
-
     .warn-box span { font-size: 1.3rem; flex-shrink: 0; }
     .warn-box p { color: #fde68a; font-size: 0.94rem; }
-
     footer {
       border-top: 1px solid var(--border);
       padding: 2.5rem 0 3rem;
       text-align: center;
     }
-
     footer p {
       color: var(--muted);
       font-size: 0.9rem;
       margin-bottom: 0.4rem;
     }
-
     footer .small {
       font-size: 0.78rem;
       color: #52525b;
       max-width: 520px;
       margin: 1rem auto 0;
     }
-
     @media (max-width: 600px) {
       .hero { padding: 3rem 0 2rem; }
       .step-card { flex-direction: column; gap: 0.6rem; }
@@ -509,7 +457,7 @@
         </div>
 
         <div class="shot reveal">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCALbA4QDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9k=" alt="Интерфейс Notion: кнопка AI и выбор тарифа Free">
+          <img src="guide.jpg" alt="Интерфейс Notion: кнопка AI и выбор тарифа Free">
         </div>
 
         <div class="step-list">
