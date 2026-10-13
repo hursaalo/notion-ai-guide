@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ИИ-модели в Notion: быстрый старт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EEF2FF; --surface:#FFFFFF; --ink:#101B3D; --muted:#4A557A;
+  --accent:#3B5BFF; --accent-ink:#FFFFFF; --mark:#FFD84D; --line:#CFD8F6; --glow:rgba(59,91,255,.22);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1430; --surface:#18204A; --ink:#EAEEFF; --muted:#A5B0DC;
+    --accent:#8EA2FF; --accent-ink:#0E1430; --mark:#FFD84D; --line:#2B3668; --glow:rgba(142,162,255,.2);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1430; --surface:#18204A; --ink:#EAEEFF; --muted:#A5B0DC;
+  --accent:#8EA2FF; --accent-ink:#0E1430; --mark:#FFD84D; --line:#2B3668; --glow:rgba(142,162,255,.2);
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Onest,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+#glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,20%),var(--glow),transparent 70%)}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:56px 22px 96px}
+
+/* hero */
+.hero{padding:24px 0 48px}
+h1{font-family:Unbounded,"Arial Black",sans-serif;font-weight:700;font-size:clamp(30px,6.2vw,52px);line-height:1.12;letter-spacing:-.02em;margin:0 0 20px}
+h1 mark{background:linear-gradient(transparent 58%,var(--mark) 58%);color:inherit;padding:0 .06em}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:600;font-size:15px;opacity:0;transform:translateY(14px) rotate(-2deg);animation:pop .6s cubic-bezier(.2,.9,.3,1.3) forwards}
+.chip:nth-child(1){animation-delay:.1s}.chip:nth-child(2){animation-delay:.22s}.chip:nth-child(3){animation-delay:.34s}.chip:nth-child(4){animation-delay:.46s}
+@keyframes pop{to{opacity:1;transform:none}}
+
+/* progress */
+.progress{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:5;display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:10px 16px;margin:0 0 36px;box-shadow:0 8px 28px -14px var(--glow)}
+.ring{width:44px;height:44px;flex:none}
+.ring circle{fill:none;stroke-width:5}
+.ring .bg{stroke:var(--line)}
+.ring .fg{stroke:var(--accent);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .5s ease}
+.progress strong{font-family:Unbounded,sans-serif;font-weight:500;font-size:14px;display:block}
+.progress span{color:var(--muted);font-size:14px}
+.progress button{margin-left:auto;background:none;border:1.5px solid var(--line);color:var(--muted);border-radius:10px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+.progress button:hover{border-color:var(--accent);color:var(--ink)}
+
+/* parts */
+h2{font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(20px,3.6vw,26px);margin:52px 0 18px;letter-spacing:-.01em}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:12px}
+.step{counter-increment:s;position:relative}
+.step label{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.step label:hover{border-color:var(--accent)}
+.step input{position:absolute;opacity:0;pointer-events:none}
+.step input:focus-visible+label{outline:3px solid var(--accent);outline-offset:3px}
+.num{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;font-family:Unbounded,sans-serif;font-size:13px;color:var(--accent);transition:all .25s}
+.num::before{content:counter(s)}
+.step p{margin:3px 0 0}
+.step small{display:block;color:var(--muted);margin-top:4px;font-size:15px}
+.step input:checked+label{background:transparent;border-style:dashed}
+.step input:checked+label .num{background:var(--accent);color:var(--accent-ink);transform:scale(1.08)}
+.step input:checked+label .num::before{content:"✓"}
+.step input:checked+label p{text-decoration:line-through;text-decoration-color:var(--accent);color:var(--muted)}
+.shot{margin:10px 0 0;border:1.5px dashed var(--line);border-radius:12px;padding:22px 16px;text-align:center;color:var(--muted);font-size:14px}
+b.k{font-weight:600;background:var(--mark);color:#101B3D;padding:0 .3em;border-radius:5px}
+
+.note{margin-top:48px;border-left:5px solid var(--accent);background:var(--surface);border-radius:0 14px 14px 0;padding:18px 22px}
+.note p{margin:0}
+.done{display:none;margin-top:28px;text-align:center;font-family:Unbounded,sans-serif;font-size:18px}
+.done.show{display:block;animation:pop .6s cubic-bezier(.2,.9,.3,1.3) both}
+footer{margin-top:56px;color:var(--muted);font-size:14px}
+
+@media (prefers-reduced-motion:reduce){
+  .chip{animation:none;opacity:1;transform:none}
+  .done.show{animation:none}
+  html{scroll-behavior:auto}
+  #glow{display:none}
+}
+@media (max-width:520px){ main{padding-top:36px} .step label{padding:14px} }
+</style>
+</head>
+<body>
+<div id="glow" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <h1>Нейросети внутри <mark>Notion</mark>: запуск за пару минут</h1>
+    <p class="lead">Восемь коротких действий: от выбора плана до первого ответа нейросети. Идите по списку и отмечайте пройденное.</p>
+    <div class="chips" aria-label="Какие модели можно встретить">
+      <span class="chip">GPT</span><span class="chip">Claude</span><span class="chip">Gemini</span><span class="chip">и другие</span>
+    </div>
+  </header>
+
+  <div class="progress" role="status" aria-live="polite">
+    <svg class="ring" viewBox="0 0 44 44" aria-hidden="true">
+      <circle class="bg" cx="22" cy="22" r="18"/>
+      <circle class="fg" id="fg" cx="22" cy="22" r="18" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
+    </svg>
+    <div><strong id="pt">0 из 8 шагов</strong><span>Отмечайте выполненное</span></div>
+    <button type="button" id="reset">Сбросить</button>
+  </div>
+
+  <h2>Ваш маршрут</h2>
+  <ol class="steps">
+    <li class="step"><input type="checkbox" id="s1"><label for="s1"><span class="num"></span><div><p>Откройте Notion и войдите в свой аккаунт: вы попадёте на главный экран.</p><div class="shot">Место для скриншота главного экрана</div></div></label></li>
+    <li class="step"><input type="checkbox" id="s2"><label for="s2"><span class="num"></span><div><p>Слева внизу найдите значок коробки и нажмите на него.</p><div class="shot">Место для скриншота значка</div></div></label></li>
+    <li class="step"><input type="checkbox" id="s3"><label for="s3"><span class="num"></span><div><p>В появившемся окне с планами выберите вариант <b class="k">Free</b>.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s4"><label for="s4"><span class="num"></span><div><p>Посмотрите, есть ли в интерфейсе переключатель моделей.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s5"><label for="s5"><span class="num"></span><div><p>Откройте список: в нём могут быть семейства GPT, Claude, Gemini и другие. Состав зависит от аккаунта.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s6"><label for="s6"><span class="num"></span><div><p>Выберите нужную модель или доверьте выбор автоматике.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s7"><label for="s7"><span class="num"></span><div><p>Впишите свой вопрос или задачу и отправьте.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s8"><label for="s8"><span class="num"></span><div><p>Если есть настройка агента, откройте её, задайте свои инструкции и сохраните.</p></div></label></li>
+  </ol>
+
+  <p class="done" id="done">Всё готово: нейросеть ждёт ваших запросов.</p>
+
+  <div class="note">
+    <p>Теперь ИИ помогает с текстами, заметками, документами и идеями, не выходя из Notion. Набор моделей, функции и лимиты определяются планом и настройками аккаунта, поэтому у всех они могут отличаться.</p>
+  </div>
+
+  <footer>Материал носит справочный характер и не связан с компанией Notion.</footer>
+</main>
+
+<script>
+(function(){
+  var boxes=[].slice.call(document.querySelectorAll('.step input'));
+  var fg=document.getElementById('fg'),pt=document.getElementById('pt'),done=document.getElementById('done');
+  var C=113.1,KEY='notion-guide-steps-v2';
+  function load(){try{var v=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b){b.checked=v.indexOf(b.id)>-1});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.filter(function(b){return b.checked}).map(function(b){return b.id})));}catch(e){}}
+  function render(){
+    var n=boxes.filter(function(b){return b.checked}).length;
+    fg.style.strokeDashoffset=C*(1-n/boxes.length);
+    pt.textContent=n+' из '+boxes.length+' шагов';
+    done.classList.toggle('show',n===boxes.length);
+  }
+  boxes.forEach(function(b){b.addEventListener('change',function(){save();render();});});
+  document.getElementById('reset').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false});save();render();});
+  load();render();
+
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var g=document.getElementById('glow');
+    window.addEventListener('pointermove',function(e){
+      g.style.setProperty('--mx',e.clientX+'px');g.style.setProperty('--my',e.clientY+'px');
+    },{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
