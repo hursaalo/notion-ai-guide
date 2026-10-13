@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ИИ-модели в Notion: быстрый старт</title>
+<title>Туториал на бесплатный доступ к 10+ ИИ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,17 +31,16 @@ body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:
 #glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,20%),var(--glow),transparent 70%)}
 main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:56px 22px 96px}
 
-/* hero */
-.hero{padding:24px 0 48px}
-h1{font-family:Unbounded,"Arial Black",sans-serif;font-weight:700;font-size:clamp(30px,6.2vw,52px);line-height:1.12;letter-spacing:-.02em;margin:0 0 20px}
+.hero{padding:24px 0 40px}
+h1{font-family:Unbounded,"Arial Black",sans-serif;font-weight:700;font-size:clamp(28px,5.8vw,46px);line-height:1.15;letter-spacing:-.02em;margin:0 0 16px}
 h1 mark{background:linear-gradient(transparent 58%,var(--mark) 58%);color:inherit;padding:0 .06em}
-.lead{color:var(--muted);max-width:56ch;margin:0 0 28px}
+.lead{color:var(--muted);max-width:58ch;margin:0 0 12px}
+.meta{font-size:14px;color:var(--muted);margin:0 0 24px}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:600;font-size:15px;opacity:0;transform:translateY(14px) rotate(-2deg);animation:pop .6s cubic-bezier(.2,.9,.3,1.3) forwards}
 .chip:nth-child(1){animation-delay:.1s}.chip:nth-child(2){animation-delay:.22s}.chip:nth-child(3){animation-delay:.34s}.chip:nth-child(4){animation-delay:.46s}
 @keyframes pop{to{opacity:1;transform:none}}
 
-/* progress */
 .progress{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:5;display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:10px 16px;margin:0 0 36px;box-shadow:0 8px 28px -14px var(--glow)}
 .ring{width:44px;height:44px;flex:none}
 .ring circle{fill:none;stroke-width:5}
@@ -52,30 +51,34 @@ h1 mark{background:linear-gradient(transparent 58%,var(--mark) 58%);color:inheri
 .progress button{margin-left:auto;background:none;border:1.5px solid var(--line);color:var(--muted);border-radius:10px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
 .progress button:hover{border-color:var(--accent);color:var(--ink)}
 
-/* parts */
-h2{font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(20px,3.6vw,26px);margin:52px 0 18px;letter-spacing:-.01em}
+h2{font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(20px,3.6vw,26px);margin:48px 0 18px;letter-spacing:-.01em}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:12px}
 .step{counter-increment:s;position:relative}
 .step label{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
 .step label:hover{border-color:var(--accent)}
 .step input{position:absolute;opacity:0;pointer-events:none}
 .step input:focus-visible+label{outline:3px solid var(--accent);outline-offset:3px}
-.num{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;font-family:Unbounded,sans-serif;font-size:13px;color:var(--accent);transition:all .25s}
+.num{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;font-family:Unbounded,sans-serif;font-size:13px;color:var(--accent);transition:all .25s;flex-shrink:0}
 .num::before{content:counter(s)}
 .step p{margin:3px 0 0}
-.step small{display:block;color:var(--muted);margin-top:4px;font-size:15px}
 .step input:checked+label{background:transparent;border-style:dashed}
 .step input:checked+label .num{background:var(--accent);color:var(--accent-ink);transform:scale(1.08)}
 .step input:checked+label .num::before{content:"✓"}
 .step input:checked+label p{text-decoration:line-through;text-decoration-color:var(--accent);color:var(--muted)}
-.shot{margin:10px 0 0;border:1.5px dashed var(--line);border-radius:12px;padding:22px 16px;text-align:center;color:var(--muted);font-size:14px}
+.shot{margin:12px 0 0;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+.shot img{display:block;width:100%;height:auto;max-height:380px;object-fit:contain}
 b.k{font-weight:600;background:var(--mark);color:#101B3D;padding:0 .3em;border-radius:5px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
 
 .note{margin-top:48px;border-left:5px solid var(--accent);background:var(--surface);border-radius:0 14px 14px 0;padding:18px 22px}
 .note p{margin:0}
+.thanks{margin-top:36px;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:22px 24px;text-align:center}
+.thanks h3{font-family:Unbounded,sans-serif;font-weight:500;font-size:18px;margin:0 0 10px}
+.thanks p{margin:0;color:var(--muted);font-size:15px}
 .done{display:none;margin-top:28px;text-align:center;font-family:Unbounded,sans-serif;font-size:18px}
 .done.show{display:block;animation:pop .6s cubic-bezier(.2,.9,.3,1.3) both}
-footer{margin-top:56px;color:var(--muted);font-size:14px}
+footer{margin-top:56px;color:var(--muted);font-size:14px;text-align:center}
 
 @media (prefers-reduced-motion:reduce){
   .chip{animation:none;opacity:1;transform:none}
@@ -90,10 +93,14 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <div id="glow" aria-hidden="true"></div>
 <main>
   <header class="hero">
-    <h1>Нейросети внутри <mark>Notion</mark>: запуск за пару минут</h1>
-    <p class="lead">Восемь коротких действий: от выбора плана до первого ответа нейросети. Идите по списку и отмечайте пройденное.</p>
-    <div class="chips" aria-label="Какие модели можно встретить">
-      <span class="chip">GPT</span><span class="chip">Claude</span><span class="chip">Gemini</span><span class="chip">и другие</span>
+    <h1>Туториал на бесплатный доступ к <mark>10+ ИИ</mark></h1>
+    <p class="lead">Инструкция по активации пробного периода и работе с ИИ-моделями в Notion.</p>
+    <p class="meta">By GRAYYTIS23 · 12 октября 2026</p>
+    <div class="chips" aria-label="Доступные модели">
+      <span class="chip">GPT</span>
+      <span class="chip">Claude</span>
+      <span class="chip">Gemini</span>
+      <span class="chip">и другие</span>
     </div>
   </header>
 
@@ -102,26 +109,46 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
       <circle class="bg" cx="22" cy="22" r="18"/>
       <circle class="fg" id="fg" cx="22" cy="22" r="18" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
     </svg>
-    <div><strong id="pt">0 из 8 шагов</strong><span>Отмечайте выполненное</span></div>
+    <div><strong id="pt">0 из 13 шагов</strong><span>Отмечайте выполненное</span></div>
     <button type="button" id="reset">Сбросить</button>
   </div>
 
-  <h2>Ваш маршрут</h2>
+  <h2>1. Регистрация аккаунта</h2>
   <ol class="steps">
-    <li class="step"><input type="checkbox" id="s1"><label for="s1"><span class="num"></span><div><p>Откройте Notion и войдите в свой аккаунт: вы попадёте на главный экран.</p><div class="shot">Место для скриншота главного экрана</div></div></label></li>
-    <li class="step"><input type="checkbox" id="s2"><label for="s2"><span class="num"></span><div><p>Слева внизу найдите значок коробки и нажмите на него.</p><div class="shot">Место для скриншота значка</div></div></label></li>
-    <li class="step"><input type="checkbox" id="s3"><label for="s3"><span class="num"></span><div><p>В появившемся окне с планами выберите вариант <b class="k">Free</b>.</p></div></label></li>
-    <li class="step"><input type="checkbox" id="s4"><label for="s4"><span class="num"></span><div><p>Посмотрите, есть ли в интерфейсе переключатель моделей.</p></div></label></li>
-    <li class="step"><input type="checkbox" id="s5"><label for="s5"><span class="num"></span><div><p>Откройте список: в нём могут быть семейства GPT, Claude, Gemini и другие. Состав зависит от аккаунта.</p></div></label></li>
-    <li class="step"><input type="checkbox" id="s6"><label for="s6"><span class="num"></span><div><p>Выберите нужную модель или доверьте выбор автоматике.</p></div></label></li>
-    <li class="step"><input type="checkbox" id="s7"><label for="s7"><span class="num"></span><div><p>Впишите свой вопрос или задачу и отправьте.</p></div></label></li>
-    <li class="step"><input type="checkbox" id="s8"><label for="s8"><span class="num"></span><div><p>Если есть настройка агента, откройте её, задайте свои инструкции и сохраните.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s1"><label for="s1"><span class="num"></span><div><p>Перейдите на <a href="https://www.notion.so" target="_blank" rel="noopener">официальный сайт Notion</a>.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s2"><label for="s2"><span class="num"></span><div><p>Создайте аккаунт через электронную почту или доступный способ авторизации.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s3"><label for="s3"><span class="num"></span><div><p>Подтвердите электронную почту, если потребуется.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s4"><label for="s4"><span class="num"></span><div><p>При настройке рабочего пространства выберите <b class="k">For work</b>.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s5"><label for="s5"><span class="num"></span><div><p>Завершите первоначальную настройку аккаунта.</p></div></label></li>
   </ol>
 
-  <p class="done" id="done">Всё готово: нейросеть ждёт ваших запросов.</p>
+  <h2>2. Активация Notion Business Trial</h2>
+  <ol class="steps">
+    <li class="step"><input type="checkbox" id="s6"><label for="s6"><span class="num"></span><div>
+      <p>Перейдите на главный экран после регистрации.</p>
+      <div class="shot"><img src="https://i.ibb.co/YTPHRPgs/2026-10-12-224438.png" alt="Главный экран Notion" loading="lazy"></div>
+    </div></label></li>
+    <li class="step"><input type="checkbox" id="s7"><label for="s7"><span class="num"></span><div>
+      <p>Нажмите на кнопку коробки в нижнем левом углу.</p>
+      <div class="shot"><img src="https://i.ibb.co/bjFfNnc2/2026-10-12-224534.png" alt="Кнопка коробки в левом нижнем углу" loading="lazy"></div>
+    </div></label></li>
+    <li class="step"><input type="checkbox" id="s8"><label for="s8"><span class="num"></span><div><p>В окне с выбором подписки выберите вариант <b class="k">Free</b>.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s9"><label for="s9"><span class="num"></span><div><p>Найдите переключатель модели или параметр выбора модели, если он предусмотрен в вашем интерфейсе.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s10"><label for="s10"><span class="num"></span><div><p>Откройте список доступных вариантов. В зависимости от аккаунта могут отображаться модели GPT, Claude, Gemini и другие.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s11"><label for="s11"><span class="num"></span><div><p>Выберите нужную модель, если она доступна, либо оставьте автоматический выбор.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s12"><label for="s12"><span class="num"></span><div><p>Введите запрос и отправьте его.</p></div></label></li>
+    <li class="step"><input type="checkbox" id="s13"><label for="s13"><span class="num"></span><div><p>Если доступен режим настройки агента — откройте его параметры, задайте инструкции и сохраните изменения.</p></div></label></li>
+  </ol>
+
+  <p class="done" id="done">Всё готово! Можно пользоваться ИИ в Notion.</p>
 
   <div class="note">
-    <p>Теперь ИИ помогает с текстами, заметками, документами и идеями, не выходя из Notion. Набор моделей, функции и лимиты определяются планом и настройками аккаунта, поэтому у всех они могут отличаться.</p>
+    <p>После настройки можно использовать доступные ИИ-функции для работы с текстами, заметками, документами, идеями и другими задачами прямо в Notion. Доступные модели, функции и лимиты зависят от тарифа и конфигурации аккаунта.</p>
+  </div>
+
+  <div class="thanks">
+    <h3>Спасибо за покупку!</h3>
+    <p>Пожалуйста, подтвердите получение товара после того, как убедитесь, что материал получен полностью.</p>
   </div>
 
   <footer>Материал носит справочный характер и не связан с компанией Notion.</footer>
@@ -131,7 +158,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 (function(){
   var boxes=[].slice.call(document.querySelectorAll('.step input'));
   var fg=document.getElementById('fg'),pt=document.getElementById('pt'),done=document.getElementById('done');
-  var C=113.1,KEY='notion-guide-steps-v2';
+  var C=113.1,KEY='notion-guide-steps-v3';
   function load(){try{var v=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b){b.checked=v.indexOf(b.id)>-1});}catch(e){}}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.filter(function(b){return b.checked}).map(function(b){return b.id})));}catch(e){}}
   function render(){
